@@ -1,0 +1,48 @@
+{% extends 'LearningCatalog/layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="container">
+  <div class="jumbotron mt-5 bg-light mr-0 ml-0 shadow mb-5">
+    
+
+    <div class="section" >
+      <h2 style="text-align:center;" class="p-4">{{ exercise.title }}</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="row">
+<!--       <div class="col-12 col-md-6 offset-md-3">
+ -->
+   
+
+    <div class="col s4">
+      {{ exercise.description | safe }}  
+    </div>
+
+
+    <div class="col s4">
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>Mis intentos</h4></li>
+        {% for attempt in my_attempts %}
+          <li class="collection-item">
+            <a href="{% url 'LearningCatalog:AttemptDetailExercise' pk exercise.id attemptexercise.id %}"><h5>Puntuación: {{ attemptexercise.score }}</h5></a>
+          </li>
+        {% endfor %}    
+      </ul>  
+    </div>
+
+
+        <div class="col s4">
+          <a class="btn btn-success" href="{% url 'LearningCatalog:TakeExercise' pk exercise.id%}">Realizar ejercicios</a>      
+        </div>
+
+<!--       </div>
+ -->    </div>
+  </div>
+</div>
+
+{% endblock %}

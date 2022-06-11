@@ -1,0 +1,87 @@
+{% extends 'LearningCatalog/layout.html' %}
+{% load static %}
+
+{% block body %}
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'LearningCatalog/css/master.css' %}">
+</head>
+
+<div class="jumbotron mt-5 bg-light mr-0 ml-0 shadow mb-5">
+  <div class="section p-4" style="text-align:center;">
+    <h3>{{ quiz.title }}</h3>
+    <div class="divider"></div>
+  </div>
+
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      background-color: #bfc3c7;
+      padding: 10px;
+    }
+    .grid-item {
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 251, 251, 0.8);
+      padding: 5px;
+      font-size: 15px;
+      text-align: center;
+    }
+   
+    </style>
+    </head>
+    <body>
+
+
+    <div class="grid-container">
+      <div class="grid-item">
+        <h5>Intentos disponibles: </h5>
+        <p>{{ quiz.allowed_attempts }}</p>
+      </div>
+      <div class="grid-item">
+        <h5>Tiempo límite: </h5>
+        <p>{{quiz.time_limit_mins}}</p>
+      </div>
+      <div class="grid-item">
+        <p>{{quiz.description | safe }}</p>
+
+      </div>  
+    </div>
+
+
+  <div class="col s12">
+    <form class="col s12">
+      {% csrf_token %}
+      {% for question in quiz.questions.all %}
+        <div class="col s12">
+          <br>
+          <p>{{ question.question_text }}</p>
+          <input type="hidden" name="question" value="{{ question.id }}">
+        </div>
+        {% for answer in question.answers.all %}
+          <div class="input col s12">
+            <label>
+              <input name="answer" type="checkbox" value="{{ answer.id }}" {% if answer.is_correct == True %} checked="checked" {% endif %}/>
+              <span>{{ answer.answer_text }}</span>
+            </label>          
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </form>
+  </div>
+
+
+  <div class="section">
+    <h5>Tus respuestas</h5>
+    <div class="respuestas">
+    {% for attempt in attempts %}
+      <h5 class="{% if attempt.answer.is_correct == True %}green{% else %}red{% endif %}-text"><b>{{ attempt.answer.answer_text }}</b></h5>
+    {% endfor %}
+  </div>
+  </div>
+
+</div>
+
+
+{% endblock %}

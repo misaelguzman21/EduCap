@@ -1,0 +1,73 @@
+{% extends 'LearningCatalog/layout.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'LearningCatalog/css/master.css' %}">
+</head>
+<div class="jumbotron mt-5 bg-light mr-0 ml-0 shadow mb-5">
+  <div class="section p-4" style="text-align:center;">
+    <h2>{{ exercise.title }}</h2>
+    <div class="divider"></div>
+  </div>
+
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      background-color: #bfc3c7;
+      padding: 10px;
+    }
+    .grid-item {
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 251, 251, 0.8);
+      padding: 5px;
+      font-size: 15px;
+      text-align: center;
+    }
+    </style>
+    </head>
+    <body>
+
+
+   
+      <div class="grid-item">
+        <p>{{exercise.description | safe }}</p>
+
+      </div>  
+    </div>
+
+    <form method="post" action="{% url 'LearningCatalog:SubmitExercise' pk exercise.id %}" role="form" class="col s12">
+      {% csrf_token %}
+      {% for question in exercise.questions.all %}
+        <div class="col s12">
+          <br>
+          <p>{{ question.question_text }}</p>
+          <input type="hidden" name="question" value="{{ question.id }}">
+        </div>
+        {% for answer in question.answers.all %}
+          <div class="input col s12">
+            <label>
+              <input name="answer" type="checkbox" value="{{ answer.id }}" >
+              <span>{{ answer.answer_text }}</span>
+            </label>          
+          </div>
+        {% endfor %}
+      {% endfor %}
+      <div class="text-center">
+          <button type="submit" value="login" class="btn btn-success">
+            Entregar
+          </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

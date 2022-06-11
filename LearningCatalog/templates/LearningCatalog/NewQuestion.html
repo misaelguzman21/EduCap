@@ -1,0 +1,206 @@
+{% extends 'LearningCatalog/layout.html' %}
+{% load static %}
+
+        
+{% block body %}
+
+<!-- <div class="row center-align">
+  <div class="col s12">
+
+
+    <form method="post" enctype="multipart/form-data" action="" role="form">
+      {% csrf_token %}
+    <h3 class="title is-3">Nueva pregunta</h3>
+
+         <label for="Question text" class="p-1">Pregunta</label>
+          <div class="input-field col s12">
+            {{ form.question_text }}
+          </div>
+          <label for="points" class="p-1">Puntos en esta pregunta:</label>
+          <div class="input-field col s12">
+            {{ form.points }}
+          </div>
+
+          <div class="input-field col s9">
+            <input type="text" name="answer_text" id="id_answer_text" class="validate">
+            <label for="answer_text">Respuesta 1</label>
+          </div>
+          
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            </div>
+            <select id="id_is_correct" name="is_correct">
+              <option disable selected>Elige si o no </option>
+              <option value="True">Yes</option>
+              <option value="False">No</option>
+            </select>
+            <label>¿Es esta la respuesta correcta?</label>
+          </div>
+
+          <div class="input-field col s9">
+            <input type="text" name="answer_text" id="id_answer_text" class="validate">
+            <label for="answer_text">Respuesta 2</label>
+          </div>
+          <div class="input-field col s3">
+            <select id="id_is_correct" name="is_correct">
+              <option value="" disabled selected>Elige si o no</option>
+              <option value="True">Yes</option>
+              <option value="False">No</option>
+            </select>
+            <label>¿Es esta la respuesta correcta?</label>
+          </div>
+
+          <div class="input-field col s9">
+            <input type="text" name="answer_text" id="id_answer_text" class="validate">
+            <label for="answer_text">Respuesta 3</label>
+          </div>
+          <div class="input-field col s3">
+            <select id="id_is_correct" name="is_correct">
+              <option value="" disabled selected>Elige si o no</option>
+              <option value="True">Yes</option>
+              <option value="False">No</option>
+            </select>
+            <label>¿Es esta la respuesta correcta?</label>
+          </div>
+
+          <div class="input-field col s9">
+            <input type="text" name="texto_respuesta" id="id_texto_respuesta" class="validate">
+            <label for="answer_text">Respuesta 4</label>
+          </div>
+          <div class="input-field col s3">
+            <select id="id_resuesta_correcta" name="respuesta_correcta">
+              <option value="" disabled selected>Elige si o no</option>
+              <option value="True">Yes</option>
+              <option value="False">No</option>
+            </select>
+            <label>¿Es esta la respuesta correcta?</label>
+          </div>
+
+
+
+      <div class="row">
+        <div class="col s12">
+          <span style="color: red; font-weight: bold;">{{ form.errors }}</span>
+        </div>
+      </div>
+
+
+      <div class="col s12">
+      <p class="control">
+        <button type="submit" value="login" class="btn btn-success">
+          Crear nueva pregunta
+        </button>
+      </p>
+    </div>
+
+    <div class="col s12">
+      <a class="btn" href="{% url 'LearningCatalog:listLesson' %}">Finalizar</a>      
+    </div>
+
+    </form>
+
+</div>
+</div> -->
+
+<div class="jumbotron mt-5 bg-light mr-0 ml-0 shadow mb-5">
+  <h2 class="title is-3 p-3" style="text-align:center;"> Crear nueva pregunta</h2>
+  <form  style="margin: auto; width: 400px;" method="post" enctype="multipart/form-data" action="" role="form">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="question_text">Pregunta</label>
+      <div class="input-field col s4">
+        {{ form.question_text }}
+      </div><br>
+    </div>
+    <div class="form-group">
+      <label for="points">Puntos en esta pregunta</label>
+      <div class="input-field col s12">
+        {{ form.points }}
+      </div>
+    </div>
+
+    <div class="input-field col s9">
+      <label for="answer_text">Respuesta 1</label><br>
+      <input type="text" name="answer_text" id="id_answer_text" class="form-control">
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+      </div>
+      <label>¿Es esta la respuesta correcta? &nbsp</label>
+      <select id="id_is_correct"  class ="custom-select my-1 mr-sm-2" name="is_correct">
+        <option disable selected>Elige si o no </option>
+        <option value="True">Si</option>
+        <option value="False">No</option>
+      </select>
+    </div>
+
+    <div class="input-field col s9">
+      <label for="answer_text">Respuesta 2</label><br>
+      <input type="text" name="answer_text" id="id_answer_text" class="form-control">
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+      </div>
+      <label>¿Es esta la respuesta correcta? &nbsp</label>
+      <select id="id_is_correct" class ="custom-select my-1 mr-sm-2" name="is_correct">
+        <option disable selected>Elige si o no </option>
+        <option value="True">Si</option>
+        <option value="False">No</option>
+      </select>
+    </div>
+
+    <div class="input-field col s9">
+      <label for="answer_text">Respuesta 3</label><br>
+      <input type="text" name="answer_text" id="id_answer_text" class="form-control">
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+      </div>
+      <label>¿Es esta la respuesta correcta? &nbsp</label>
+      <select id="id_is_correct" class ="custom-select my-1 mr-sm-2" name="is_correct">
+        <option disable selected>Elige si o no </option>
+        <option value="True">Si</option>
+        <option value="False">No</option>
+      </select>
+    </div>
+
+    <div class="input-field col s9">
+      <label for="answer_text">Respuesta 4</label><br>
+      <input type="text" name="answer_text" id="id_answer_text" class="form-control">
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+      </div>
+      <label>¿Es esta la respuesta correcta? &nbsp</label>
+      <select id="id_is_correct" class ="custom-select my-1 mr-sm-2" name="is_correct">
+        <option disable selected>Elige si o no </option>
+        <option value="True">Si</option>
+        <option value="False">No</option>
+      </select>
+    </div>
+
+  <div class="row">
+  <div class="col s12">
+    <span style="color: red; font-weight: bold;">{{ form.errors }}</span>
+  </div>
+  </div>
+
+
+  <div class="col s12">
+  <p class="control">
+    <a class="btn btn-danger" href="{% url 'LearningCatalog:listLesson' %}">Finalizar</a>   
+  <button type="submit" value="login" class="btn btn-success">
+    Crear nueva pregunta
+  </button>
+  </p>
+  </div>
+  </form>
+</div>
+
+{% endblock %}

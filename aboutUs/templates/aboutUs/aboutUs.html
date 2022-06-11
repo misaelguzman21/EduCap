@@ -1,0 +1,52 @@
+{% extends 'LearningCatalog/layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+
+<div class="container">
+    <div class="row my-2 mx-0 justify-content-md-center" data-aos="fade-bottom">
+        <div class="card shadow-lg">
+            
+            
+            <div class="card-body text-center">
+                <h1 class="card-title">Acerca de EduCap</h1>
+                <br>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <p class="text-justify">{{about.descripcion}}</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="col">
+                            <img class="img-fluid shadow rounded" style='max-width: 100%;'src="{{about.foto.url}}">
+                        </div>
+                    </div>
+                </div>
+                <br><hr><br>
+                <h1 class="card-title">Las Personas de EduCap</h1>
+                <br>
+                {% for person in people %}
+                <div class="row align-items-center">
+                    
+                    <div class="col-lg-6">
+                        <div class="col">
+                            <img class="img-fluid shadow rounded" style='max-width: 100%;' src="{{person.foto.url}}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2>{{person.nombre}}</h2>
+                        <p class="text-justify">{{person.descripcion}}</p>
+                    </div>
+                </div>
+                <br>
+                {% endfor %}
+                <br><hr><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

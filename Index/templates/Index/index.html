@@ -1,0 +1,79 @@
+{% extends 'LearningCatalog/layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+<head>
+    <title>Inicio</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'LearningCatalog/css/master.css' %}">
+</head>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{carrousel.imagen1.url}}" alt="" style="max-height: 600px; width: 100%;">
+        </div>
+        <div class="carousel-item">
+            <img src="{{carrousel.imagen2.url}}" alt="" style="max-height: 600px; width: 100%;">
+        </div>
+        <div class="carousel-item">
+            <img src="{{carrousel.imagen3.url}}" alt="" style="max-height: 600px; width: 100%;">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="jumbotron">
+                <h1 class="display-4">{{jumbotron.titulo}}</h1>
+                <p class="lead">{{jumbotron.subtitulo}}</p>
+                <hr class="my-4">
+                <p>{{jumbotron.subtituloPequeno}}
+                </p>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Leer más</a>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center ">
+        <div class="col-12 col-md-6 col-lg-4 text-center mt-4">
+            <div class="card mx-auto mx-md-0" style="width: 18rem;">
+                <img src="{{tarjetas.imagenLecciones.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Lecciones</h5>
+                    <p class="card-text">{{tarjetas.textoLecciones}}</p>
+                    <a href="{% url 'LearningCatalog:listLesson' %}" class="btn btn-primary">Ver contenido</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+            <div class="card mx-auto mx-md-0" style="width: 18rem;">
+                <img src="{{tarjetas.imagenCategorias.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Categorías</h5>
+                    <p class="card-text">{{tarjetas.textoCategorias}}</p>
+                    <a href="{% url 'LearningCatalog:primaryCategory' %}" class="btn btn-primary">Ver contenido</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+            <div class="card mx-auto mx-md-0" style="width: 18rem;">
+                <img src="{{tarjetas.imagenCrearCuenta.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Crea una cuenta</h5>
+                    <p class="card-text">{{tarjetas.textoCrearCuenta}}</p>
+                    <a href="{% url 'myAccount:studentCreate' %}" class="btn btn-primary">Crear una cuenta</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+{% endblock %}

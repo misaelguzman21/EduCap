@@ -1,0 +1,66 @@
+{% extends 'LearningCatalog/layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+
+<div class="container">
+<!--     <div class="row my-2 mx-0 justify-content-md-center" data-aos="fade-bottom"> -->
+        <div class="card my-3 mx-3 shadow-lg">      
+            <div class="card-body">
+                <h1 class="card-title text-center">Solicitar nueva lección</h1><br>
+                <div class="container">
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="FName"><b>Usuario</b></label>
+                            <input name="user" type="text" id="FName" class="form-control" required>
+                            <div class="valid-feedback">Usuario válido</div>
+                            <div class="invalid-feedback">Favor de escribir su nombre de usuario</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lessonname"><b>Nombre de categoría</b></label>
+                            <input  name="nombre_leccion" type="text" id="lessonname" class="form-control" placeholder="Algebra lineal" required>
+                            <div class="valid-feedback">Nombre válido</div>
+                            <div class="invalid-feedback">Favor de llenar el campo</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contenido"><b>Descripción lección</b></label>
+                            <textarea rows = "5" cols = "40" maxlength = "100" name="contenido" type="text" id="contenido" class="form-control"> </textarea required>
+                            <div class="valid-feedback">Descripción válida</div>
+                            <div class="invalid-feedback">Favor de llenar el campo de descripción</div>
+                        </div>
+                        <div class="text-right">
+                            <input type="submit" class="btn btn-dark btn-lg mt-1 ml-4">
+                        </div>
+                    </form>
+                    <script>
+                        // Disable form submissions if there are invalid fields
+                        (function() {
+                          'use strict';
+                          window.addEventListener('load', function() {
+                            // Get the forms we want to add validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function(form) {
+                              form.addEventListener('submit', function(event) {
+                                if (form.checkValidity() === false) {
+                                  event.preventDefault();
+                                  event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                              }, false);
+                            });
+                          }, false);
+                        })();
+                    </script>
+                </div> 
+            </div>
+        </div>
+<!--     </div> -->
+</div>
+
+
+
+
+{% endblock %}

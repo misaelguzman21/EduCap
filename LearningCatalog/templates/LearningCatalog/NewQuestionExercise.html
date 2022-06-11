@@ -1,0 +1,103 @@
+{% extends 'LearningCatalog/layout.html' %}
+{% load static %}
+
+        
+{% block body %}
+
+<div class="jumbotron mt-5 bg-light mr-0 ml-0 shadow mb-5">
+  <h2 class="title is-3 p-3" style="text-align:center;"> Crear nueva pregunta</h2>
+  <form  style="margin: auto; width: 400px;" method="post" enctype="multipart/form-data" action="" role="form">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="question_text">Pregunta</label>
+      <div class="input-field col s4">
+        {{ form.question_text }} 
+      </div><br>
+    </div>
+    <div class="form-group">
+      <label for="points">Puntos en esta pregunta</label>
+      <div class="input-field col s12">
+        {{ form.points }}
+      </div>
+    </div>
+
+    <div class="input-field col s9">
+      <label for="answer_text">Respuesta 1</label><br>
+      <input type="text" name="answer_text" id="id_answer_text" class="form-control">
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+      </div>
+      <label>¿Es esta la respuesta correcta? &nbsp</label>
+      <select id="id_is_correct"  class ="custom-select my-1 mr-sm-2" name="is_correct">
+        <option disable selected>Elige si o no </option>
+        <option value="True">Si</option>
+        <option value="False">No</option>
+      </select>
+    </div>
+
+    <div class="input-field col s9">
+      <label for="answer_text">Respuesta 2</label><br>
+      <input type="text" name="answer_text" id="id_answer_text" class="form-control">
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+      </div>
+      <label>¿Es esta la respuesta correcta? &nbsp</label>
+      <select id="id_is_correct" class ="custom-select my-1 mr-sm-2" name="is_correct">
+        <option disable selected>Elige si o no </option>
+        <option value="True">Si</option>
+        <option value="False">No</option>
+      </select>
+    </div>
+
+    <div class="input-field col s9">
+      <label for="answer_text">Respuesta 3</label><br>
+      <input type="text" name="answer_text" id="id_answer_text" class="form-control">
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+      </div>
+      <label>¿Es esta la respuesta correcta? &nbsp</label>
+      <select id="id_is_correct" class ="custom-select my-1 mr-sm-2" name="is_correct">
+        <option disable selected>Elige si o no </option>
+        <option value="True">Si</option>
+        <option value="False">No</option>
+      </select>
+    </div>
+
+    <div class="input-field col s9">
+      <label for="answer_text">Respuesta 4</label><br>
+      <input type="text" name="answer_text" id="id_answer_text" class="form-control">
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+      </div>
+      <label>¿Es esta la respuesta correcta? &nbsp</label>
+      <select id="id_is_correct" class ="custom-select my-1 mr-sm-2" name="is_correct">
+        <option disable selected>Elige si o no </option>
+        <option value="True">Si</option>
+        <option value="False">No</option>
+      </select>
+    </div>
+
+  
+
+
+  <div class="col s12">
+  <p class="control">
+    <a class="btn btn-danger" href="{% url 'LearningCatalog:listLesson' %}">Finalizar</a>   
+  <button type="submit" value="login" class="btn btn-success">
+    Crear nueva pregunta
+  </button>
+  </p>
+  </div>
+  </form>
+</div>
+
+{% endblock %}
