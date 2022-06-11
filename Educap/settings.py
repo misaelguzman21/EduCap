@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-p1nr7y+=8jizau=nogae=uj1yr#$n0b=mo(=e81e56!91tyuz=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://gentle-lowlands-24763.herokuapp.com/']
+# ALLOWED_HOSTS = ['https://gentle-lowlands-24763.herokuapp.com/']
 
 
 # Application definition
@@ -135,9 +135,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 # Archivos estaticos definidos por default en una carpeta static dentro de las aplicaciones
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-# Archivo estatico globals
+# Archivo estatico globals EDUCAP/static
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
@@ -170,7 +171,7 @@ REST_FRAMEWORK = {
 
 }
 
-django_heroku.settings(locals())
+
 
 JWT_AUTH = {
     # how long the original token is valid for
@@ -183,3 +184,5 @@ JWT_AUTH = {
     # it can be refreshed.  exprired tokens can't be refreshed.
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=30),
 }
+
+django_heroku.settings(locals())
